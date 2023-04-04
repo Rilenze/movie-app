@@ -4,7 +4,9 @@ export default function MovieList({ movies }) {
   return (
     <>
       {movies.map((movie) => (
-        <img src={movie.Poster} alt="movie"></img>
+        <div key={movie.imdbID} className="d-flex justify-content-start image">
+          <img src={movie.Poster} alt="movie"></img>
+        </div>
       ))}
     </>
   );
