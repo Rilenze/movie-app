@@ -4,9 +4,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import MovieListHeading from "./components/MovieListHeading";
 import SearchBox from "./components/SearchBox";
+import AddFavourites from "./components/AddFavourites";
+import RemoveFavourites from "./components/RemoveFavourites";
 
 function App() {
   const [movies, setMovies] = useState([]);
+  const [favourites, setFavourites] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
   const requestAPI = async (searchValue) => {
@@ -24,6 +27,18 @@ function App() {
     requestAPI(searchValue);
   }, [searchValue]);
 
+  const addFavouriteMovie = (movie) => {
+    const newFavouriteList = [...favourites, movie];
+    setFavourites(newFavouriteList);
+  };
+
+  const removeFavouriteMovie = (movie) => {
+    const newFavouriteList = favourites.filter(
+      (movie2) => movie.imdbID !== movie2.imdbID
+    );
+    setFavourites(newFavouriteList);
+  };
+
   return (
     <div className="container-fluid movie-app">
       <div className="row d-flex align-items-center mt-4 mb-4">
@@ -31,10 +46,21 @@ function App() {
         <SearchBox setSearchValue={setSearchValue} />
       </div>
       <div className="row">
-        <MovieList movies={movies} />
+        <MovieList
+          movies={movies}
+          overlay={AddFavourites}
+          handleFavouritesClick={addFavouriteMovie}
+        />
       </div>
       <div className="row">
         <MovieListHeading heading="Favourites" />
+      </div>
+      <div className="row">
+        <MovieList
+          movies={favourites}
+          overlay={RemoveFavourites}
+          handleFavouritesClick={removeFavouriteMovie}
+        />
       </div>
     </div>
   );
