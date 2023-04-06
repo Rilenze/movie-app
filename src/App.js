@@ -28,6 +28,7 @@ function App() {
   }, [searchValue]);
 
   const addFavouriteMovie = (movie) => {
+    if (favourites.includes(movie)) return;
     const newFavouriteList = [...favourites, movie];
     setFavourites(newFavouriteList);
   };
@@ -52,7 +53,7 @@ function App() {
           handleFavouritesClick={addFavouriteMovie}
         />
       </div>
-      <div className="row">
+      <div className="row d-flex align-items-center mt-4 mb-4">
         <MovieListHeading heading="Favourites" />
       </div>
       <div className="row">

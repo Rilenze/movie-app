@@ -7,10 +7,11 @@ export default function MovieList({ movies, overlay, handleFavouritesClick }) {
       {movies.map((movie) => (
         <div
           key={movie.imdbID}
-          className="d-flex justify-content-start image-container"
+          className="d-flex justify-content-start m-3 image-container"
+          onClick={() => handleFavouritesClick(movie)}
         >
-          <img src={movie.Poster} alt="movie" className="img-fluid"></img>
-          <div className="overlay" onClick={() => handleFavouritesClick(movie)}>
+          <img src={movie.Poster} alt="movie" height="300"></img>
+          <div className="overlay ">
             <Overlay />
           </div>
         </div>

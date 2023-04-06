@@ -9,7 +9,6 @@ body {
 }
 
 .image-container {
-    width: auto;
     position: relative;
     transition: transform 0.2s;
 }
@@ -34,8 +33,5 @@ body {
     text-align: center;
 }
 
-.favourite {
-    margin-right: 4px;
-}
 
 
