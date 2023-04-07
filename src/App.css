@@ -4,11 +4,7 @@ body {
 }
 
 .horizontal-list {
-    overflow-x: hidden;
-}
-
-.horizontal-list:hover {
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 .image-container {

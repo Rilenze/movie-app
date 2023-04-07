@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import MovieList from "./components/MovieList";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -50,13 +50,35 @@ function App() {
     saveToLocalStorage(newFavouriteList);
   };
 
+  function useHorizontalScroll() {
+    const elRef = useRef();
+    useEffect(() => {
+      const el = elRef.current;
+      if (el) {
+        const onWheel = (e) => {
+          if (e.deltaY === 0) return;
+          e.preventDefault();
+          el.scrollBy({
+            left: e.deltaY < 0 ? -50 : 50,
+          });
+        };
+        el.addEventListener("wheel", onWheel);
+        return () => el.removeEventListener("wheel", onWheel);
+      }
+    }, []);
+    return elRef;
+  }
+
   return (
     <div className="container-fluid movie-app">
       <div className="row d-flex align-items-center mt-4 mb-4">
         <MovieListHeading heading="Movies" />
         <SearchBox setSearchValue={setSearchValue} />
       </div>
-      <div className="row flex-nowrap horizontal-list">
+      <div
+        className="row flex-nowrap horizontal-list"
+        ref={useHorizontalScroll()}
+      >
         <MovieList
           movies={movies}
           overlay={AddFavourites}
@@ -66,7 +88,10 @@ function App() {
       <div className="row d-flex align-items-center mt-4 mb-4">
         <MovieListHeading heading="Favourites" />
       </div>
-      <div className="row flex-nowrap horizontal-list">
+      <div
+        className="row flex-nowrap horizontal-list"
+        ref={useHorizontalScroll()}
+      >
         <MovieList
           movies={favourites}
           overlay={RemoveFavourites}
