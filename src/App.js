@@ -56,7 +56,7 @@ function App() {
         <MovieListHeading heading="Movies" />
         <SearchBox setSearchValue={setSearchValue} />
       </div>
-      <div className="row">
+      <div className="row flex-nowrap horizontal-list">
         <MovieList
           movies={movies}
           overlay={AddFavourites}
@@ -66,7 +66,7 @@ function App() {
       <div className="row d-flex align-items-center mt-4 mb-4">
         <MovieListHeading heading="Favourites" />
       </div>
-      <div className="row">
+      <div className="row flex-nowrap horizontal-list">
         <MovieList
           movies={favourites}
           overlay={RemoveFavourites}

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function MovieList({ movies, overlay, handleFavouritesClick }) {
   const Overlay = overlay;
+
   return (
     <>
       {movies.map((movie) => (
