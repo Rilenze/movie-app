@@ -3,7 +3,7 @@
 The Movie App is a React application that allows users to search for movies and save them to their favorite list. 
 It utilizes the OMDb API to fetch movie data and provides a user-friendly interface for searching and managing movies.
 
-![MovieApp](https://github.com/Rilenze/movie-app/assets/73667281/fa8a1220-c9d5-4ed5-b5d2-4bf19e2f07df)
+![MovieApp](https://github.com/Rilenze/movie-app/assets/73667281/a30db9e7-1bfd-43d8-af7e-5a3014245494)
 
 ## Installation
 
